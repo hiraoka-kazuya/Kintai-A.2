@@ -8,6 +8,7 @@ end
 ruby '2.7.6'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.7.rc1'
+gem 'rails-i18n'
 gem 'bcrypt'
 gem 'faker'
 gem 'bootstrap-sass'
