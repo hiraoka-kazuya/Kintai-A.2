@@ -8,3 +8,5 @@
 * Ruby
 * Rails
 * Git
+
+勤怠Aの下地完成後、新しくブランチ名"admin-user"を作成 
