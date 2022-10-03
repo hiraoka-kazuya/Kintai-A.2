@@ -3,17 +3,19 @@
 <h1>拠点一覧</h1>
 
 <div>
-  <div class="table table-bordered table-condensed table-hover" id="table-bases">
+  <table class="table table-bordered table-condensed table-hover" id="table-bases">
     <thead>
       <tr>
-        <th></th>
-        <th></th>
+        <th colspan="2"></th>
+        <th colspan="2"></th>
         <th>拠点番号</th>
         <th>拠点名</th>
         <th>拠点種類</th>
       </tr>
     </thead>
-
+<%
+=begin%>
+ 
     <tbody>
       <% @bases.each do |base| %>
         <tr>
@@ -28,9 +30,14 @@
           </td>
           <td class="center"><%= base.id %></td>
           <td class="center"><%= base.name %></td>
-          <td class="center"><%= base.type %></td>
+          <td class="center"><%= base.type %></td> 
         </tr>
       <% end %>
-    </tbody>
+    </tbody> 
+<%
+=end%>
+  </table>
+  <div class="container">
+    <%= link_to "拠点情報追加", new_basis_path, class: "btn btn-primary" %>
   </div>
 </div>
