@@ -13,9 +13,6 @@
         <th>拠点種類</th>
       </tr>
     </thead>
-<%
-=begin%>
- 
     <tbody>
       <% @bases.each do |base| %>
         <tr>
@@ -34,8 +31,6 @@
         </tr>
       <% end %>
     </tbody> 
-<%
-=end%>
   </table>
   <div class="container">
     <%= link_to "拠点情報追加", new_basis_path, class: "btn btn-primary" %>

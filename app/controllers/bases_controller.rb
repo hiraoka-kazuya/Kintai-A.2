@@ -1,6 +1,6 @@
 class BasesController < ApplicationController
   def index
-    @base = Bases.find(params[:id])
+    @bases = Base.all
   end
 
   def new
