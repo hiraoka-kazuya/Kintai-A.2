@@ -33,6 +33,8 @@ ActiveRecord::Schema.define(version: 20221004004458) do
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "email"
+    t.integer "id"
+    t.integer "card_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "password_digest"
@@ -41,6 +43,8 @@ ActiveRecord::Schema.define(version: 20221004004458) do
     t.string "department"
     t.datetime "basic_time", default: "2022-10-03 23:00:00"
     t.datetime "work_time", default: "2022-10-03 22:30:00"
+    t.datetime "started_at", default: "2022-10-03 22:30:00"
+    t.datetime "finished_at", default: "2022-10-03 22:30:00"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 

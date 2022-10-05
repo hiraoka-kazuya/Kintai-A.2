@@ -1,4 +1,5 @@
 <% provide(:title, 'All Users') %>
+<% provide(:class_text, 'user--edit') %>
 
 <h1>ユーザー一覧</h1>
 
@@ -11,11 +12,8 @@
         これを押すと
       </div>
       <div class="card-body accordion-content">
-        開きます
+        <%= render 'accordion_form' %>
       </div>
     </div>
   <%= will_paginate %>
 </div>
-
-<!--モーダルウインドウ表示-->
-<div id="edit-basic-info" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"></div>
