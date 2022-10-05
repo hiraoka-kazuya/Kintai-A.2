@@ -1,11 +1,13 @@
 <%= form_with(model: @base, local: true) do |f| %>
   <%= render partial: 'shared/error_messages', locals: {obj:@base} %>
 
-  <%= f.label :拠点名, class: "label-#{yield(:class_text)}" %>
+  <%= f.label :name, class: "label-#{yield(:class_text)}" %>
   <%= f.text_field :name, class: "form-control" %>
 
-  <%= f.label :拠点種類, class: "label-#{yield(:class_text)}" %>
+  <%= f.label :category, class: "label-#{yield(:class_text)}" %>
   <%= f.text_field :category, class: "form-control" %>
 
   <%= f.submit yield(:button_text), class: "btn btn-primary btn-block btn-#{yield(:class_text)}" %>
+
+  <p>※ 拠点番号は自動採番の為、指定できません。</p>
 <% end %>

@@ -21,3 +21,8 @@ ja:
           finished_at: 退勤時間
           note: 備考
           user: ユーザーID
+
+        base:
+          id: 拠点番号
+          name: 拠点名
+          category: 拠点種類
