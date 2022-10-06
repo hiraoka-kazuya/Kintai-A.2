@@ -12,8 +12,8 @@
   <%= f.label :id, class: "label-#{yield(:class_text)}" %>
   <%= f.text_field :id, class: "form-control" %>
 
-  <%= f.label :card_id, class: "label-#{yield(:class_text)}" %>
-  <%= f.text_field :card_id, class: "form-control" %>
+  <%= f.label :uid, class: "label-#{yield(:class_text)}" %>
+  <%= f.text_field :uid, class: "form-control" %>
 
   <%= f.label :password, class: "label-#{yield(:class_text)}" %>
   <%= f.password_field :password, class: "form-control" %>
@@ -21,13 +21,11 @@
   <%= f.label :basic_time, class: "label-#{yield(:class_text)}" %>
   <%= f.text_field :basic_time, class: "form-control" %>
 
-  <%= f.label :started_at, class: "label-#{yield(:class_text)}" %>
-  <%= f.text_field :started_at, class: "form-control" %>
+  <%= f.label :designated_work_start_time, class: "label-#{yield(:class_text)}" %>
+  <%= f.text_field :designated_work_start_time, class: "form-control" %>
 
-  <%= f.label :finished_at, class: "label-#{yield(:class_text)}" %>
-  <%= f.text_field :finished_at, class: "form-control" %>
+  <%= f.label :designated_work_end_time, class: "label-#{yield(:class_text)}" %>
+  <%= f.text_field :designated_work_end_time, class: "form-control" %>
 
-
-  
   <%= f.submit "編集する", class: "btn btn-primary btn-block btn-#{yield(:class_text)}" %>
 <% end %>
