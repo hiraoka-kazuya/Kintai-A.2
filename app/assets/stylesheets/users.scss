@@ -65,15 +65,23 @@
 
 // アコーディオンメニューデザイン
 .accordion-container .accordion-title {
+  clear: both;
+  float: left;
+  width: 100%;
+  margin-top: 50px;
+  -moz-box-sizing:    border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing:         border-box;
+
   color: #fff;
-  background: #343a40 ;
+  // background: #d3d3d3;
   cursor: pointer
 }
 // カーソルが乗ったときのデザイン
 .accordion-container .accordion-title:hover,
 .accordion-container .accordion-title:active,
 .accordion-container .content-entry.open .accordion-title {
-  background-color: #000000;
+  // background-color: #d3d3d3;
   color: white;
   box-shadow: 0 4px 7px 0 rgba(0, 0, 0, 0.5);
   transform: translateY(-5px);

@@ -16,24 +16,29 @@
 
     <% @users.each do |user| %>
       <tr>
+        
         <td>
-          <% if current_user.admin? %>
-            <%= link_to user.name, user %>
-          <% else %>
-            <%= user.name %>
+          <%= user.name %>
+        </td>
+        <td class="center">
+          <% if  current_user.admin? %>
+            <%= link_to "削除", user, method: :delete,
+                data: { confirm: "削除してよろしいですか？"},
+                class: "btn btn-danger" %>
+            
+            <!--accordion-containerの中にtitleとontentを配置-->
+            <!--cardとcard-bodyはBootstrapのものなので使わない方は無視してください-->
+            <div class="card accordion-container">
+              <div class="card-body accordion-title js-accordion-title btn btn-primary">
+                編集
+              </div>
+              <div class="card-body accordion-content">
+                <%= render 'accordion_form' %>
+              </div>
+            </div>
           <% end %>
         </td>
         <td>
-          <!--accordion-containerの中にtitleとontentを配置-->
-          <!--cardとcard-bodyはBootstrapのものなので使わない方は無視してください-->
-          <div class="card accordion-container">
-            <div class="card-body accordion-title js-accordion-title">
-              ここを開く
-            </div>
-            <div class="card-body accordion-content">
-              <%= render 'accordion_form' %>
-            </div>
-          </div>
         </td>
       </tr>
     <% end %>
