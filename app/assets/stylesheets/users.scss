@@ -65,16 +65,15 @@
 
 // アコーディオンメニューデザイン
 .accordion-container .accordion-title {
-  clear: both;
-  float: left;
-  width: 100%;
-  margin-top: 50px;
-  -moz-box-sizing:    border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing:         border-box;
+  // clear: both;
+  // float: left;
+  width: 50%;
+  // margin-top: 20px;
+  // -moz-box-sizing:    border-box;
+  // -webkit-box-sizing: border-box;
+  // box-sizing:         border-box;
 
   color: #fff;
-  // background: #d3d3d3;
   cursor: pointer
 }
 // カーソルが乗ったときのデザイン
