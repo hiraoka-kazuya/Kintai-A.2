@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  get 'csv/index', to: 'csv#index'
+  post '/data', to: 'csv#data'
+
   root 'static_pages#top'
   get '/signup', to: 'users#new'
 
