@@ -9,8 +9,25 @@ class UsersController < ApplicationController
     @users = User.paginate(page: params[:page])
   end 
 
+  def import
+    if params[:file].blank?
+      flash[:danger] = "CSVファイルを選択して下さい。"
+    else
+      User.import(params[:file])
+      flash[:success] = "CSVファイルをインポートしました。"
+    end
+    redirect_to users_url
+  end
+
   def show
     @worked_sum = @attendances.where.not(started_at: nil).count
+    # csv出力
+    respond_to do |format|
+      format.html 
+      format.csv do |csv|
+        send_attndances_csv(@attendances)
+      end
+    end   
   end
 
   def new
@@ -69,7 +86,11 @@ class UsersController < ApplicationController
     end
 
     def basic_info_params
-      params.require(:user).permit(:department, :basic_time, :work_time)
+      params.require(:user).permit(:name, :email, :department,
+                                    :password, :password_confirmation,
+                                    :designated_work_start_time,
+                                    :designated_work_end_time,
+                                    :uid)
     end
 
 
