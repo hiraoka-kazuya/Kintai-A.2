@@ -4,7 +4,7 @@ ja:
       user: ユーザー
     attributes:
         user:
-          id: 社員番号
+          id: id
           name: 名前
           email: メールアドレス
           department: 所属
@@ -17,6 +17,7 @@ ja:
           designated_work_start_time: 指定勤務開始時間
           designated_work_end_time: 指定勤務終了時間
           uid: カードID
+          employee_number: 社員番号
 
         attendance:
           worked_on: 日付

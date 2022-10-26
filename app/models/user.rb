@@ -50,7 +50,8 @@ class User < ApplicationRecord
   end
 
   def self.import(file)
-    CSV.foreach(file.path, headers: true) do |row|
+    # Mac専用テキストエディタ「mi」を使用した際の、文字化け防止コード'MK932:UTF-8'
+    CSV.foreach(file.path, headers: true, skip_blanks: true, encoding: 'MK932:UTF-8') do |row|
       # IDが見つかれば、レコードを呼び出し、見つかれなければ、新しく作成
       user = find_by(id: row["id"]) || new
       # CSVからデータを取得し、設定する
@@ -62,6 +63,6 @@ class User < ApplicationRecord
 
   # 更新を許可するカラムを定義
   def self.updatable_attributes
-    ["name", "email", "department", "employee_number", "uid", "password", "basic_time", "designated_work_start_time", "designated_work_end_time"]
+    ["id", "name", "email", "department", "employee_number", "uid", "password", "basic_time", "designated_work_start_time", "designated_work_end_time"]
   end
 end

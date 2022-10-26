@@ -81,6 +81,7 @@ class UsersController < ApplicationController
       params.require(:user).permit(:name, :email, :department,
                                     :password, :password_confirmation,
                                     :basic_time,
+                                    :employee_number,
                                     :designated_work_start_time,
                                     :designated_work_end_time,
                                     :uid)
@@ -89,6 +90,7 @@ class UsersController < ApplicationController
     def basic_info_params
       params.require(:user).permit(:name, :email, :department,
                                     :password, :password_confirmation,
+                                    :employee_number,
                                     :basic_time,
                                     :designated_work_start_time,
                                     :designated_work_end_time,
