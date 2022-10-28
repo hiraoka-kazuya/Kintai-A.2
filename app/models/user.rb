@@ -51,7 +51,7 @@ class User < ApplicationRecord
 
   def self.import(file)
     # Mac専用テキストエディタ「mi」を使用した際の、文字化け防止コード'MK932:UTF-8'
-    CSV.foreach(file.path, headers: true, skip_blanks: true, encoding: 'MK932:UTF-8') do |row|
+    CSV.foreach(file.path, headers: true, skip_blanks: true, encoding: 'MS932:UTF-8') do |row|
       # IDが見つかれば、レコードを呼び出し、見つかれなければ、新しく作成
       user = find_by(id: row["id"]) || new
       # CSVからデータを取得し、設定する
