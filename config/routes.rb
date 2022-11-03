@@ -16,6 +16,7 @@ Rails.application.routes.draw do
       get 'attendances/edit_one_month'
       patch 'attendances/update_one_month'
       get 'accordion_form'
+      get 'employee_at_work_index'
 
     end
     resources :attendances, only: :update
