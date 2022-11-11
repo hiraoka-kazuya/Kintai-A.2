@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20221104135131) do
+ActiveRecord::Schema.define(version: 20221111015431) do
 
   create_table "attendances", force: :cascade do |t|
     t.date "worked_on"
@@ -20,6 +20,29 @@ ActiveRecord::Schema.define(version: 20221104135131) do
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "restarted_at"
+    t.datetime "refinished_at"
+    t.time "overwork_end_time"
+    t.boolean "next_day"
+    t.boolean "overwork_next_day"
+    t.string "overwork_status"
+    t.string "overwork_approval_status"
+    t.string "attendance_change_status"
+    t.string "attendance_change_check_status"
+    t.string "one_month_approval_status"
+    t.string "one_month_approval_check_status"
+    t.string "process_content"
+    t.string "superior_confirmation"
+    t.string "superior_notice_confirmation"
+    t.string "superior_attendance_change_confirmation"
+    t.string "superior_attendance_change_approval_confirmation"
+    t.string "superior_month_notice_confirmation"
+    t.string "superior_month_approval_confirmation"
+    t.boolean "is_check"
+    t.boolean "change_check"
+    t.boolean "approval_check"
+    t.datetime "begin_started"
+    t.datetime "begin_finished"
     t.index ["user_id"], name: "index_attendances_on_user_id"
   end
 
@@ -40,8 +63,8 @@ ActiveRecord::Schema.define(version: 20221104135131) do
     t.string "remember_digest"
     t.boolean "admin", default: false
     t.string "department"
-    t.datetime "basic_time", default: "2022-11-05 23:00:00"
-    t.datetime "work_time", default: "2022-11-05 22:30:00"
+    t.datetime "basic_time", default: "2022-11-10 23:00:00"
+    t.datetime "work_time", default: "2022-11-10 22:30:00"
     t.time "designated_work_start_time", default: "2000-01-01 23:00:00"
     t.time "designated_work_end_time", default: "2000-01-01 08:00:00"
     t.string "uid"
