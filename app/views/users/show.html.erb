@@ -21,11 +21,41 @@
   </table>
 </div>
 
-<div>
-  <td>【 所属長承認申請のお知らせ 】</td>
-  <td>【 勤怠変更申請のお知らせ 】</td>
-  <td>【 残業申請のお知らせ 】</td>
-</div>
+<%
+=begin%>
+ <div class="notice">
+  <% if current_user.superior? && current_user(@user) %>
+    <!--所属長承認申請のお知らせ-->
+    <div>
+      <% if @attendance_change_sum > 0 %> 
+        <%= link_to "【 所属長承認申請のお知らせ 】", "#", remote: true, class: "notice-superior" %>
+        <span class="notice-border-superior"><%= "#{@one_month_approval_sum}件の通知があります。" %></span>
+      <% else %>
+        <%= "【 所属長承認申請のお知らせ 】" %>
+      <% end %>
+    </div>
+    <!--勤怠変更申請のお知らせ-->
+    <div>
+      <% if @attendance_change_sum > 0 %>      
+        <%= link_to "【勤怠変更申請のお知らせ】", edit_attendance_change_user_attendance_path(@user), remote: true, class: "notice-superior" %>
+        <span class="notice-border-superior"><%= "#{@attendance_change_sum}件の通知があります" %></span>
+      <% else %>
+        <%= "【勤怠変更申請のお知らせ】" %>
+      <% end %>
+    </div>
+      <!--残業申請-->
+    <div>
+      <% if @overwork_sum > 0 %>
+        <%= link_to "【残業申請のお知らせ】", edit_overwork_notice_user_attendance_path(@user), remote: true, class: "notice-superior" %>
+        <span class="notice-border-superior"><%= "#{@overwork_sum}件の通知があります" %></span>        
+      <% else %>
+        <%= "【残業申請のお知らせ】" %>
+      <% end %>
+    </div>   
+  <% end %>
+</div> 
+<%
+=end%>
 
 <div class="btn-users-show">
   <%= link_to "1ヶ月の勤怠編集へ", attendances_edit_one_month_user_path(date: @first_day), class: "btn btn-primary" %>
@@ -35,8 +65,10 @@
   <table class="table table-bordered table-condensed table-hover" id="table-attendances">
     <thead>
       <tr>
+        <th>残業申請</th>
         <th>日付</th>
         <th>曜日</th>
+        <th>
         <th>勤怠登録</th>
         <th>出勤時間</th>
         <th>退勤時間</th>
@@ -80,6 +112,23 @@
         <td colspan="2"><%= @attendances.count %></td>
         <td colspan="2"><%= format_basic_info(@user.work_time).to_f * @worked_sum %></td>
         <td colspan="2"><%= format("%.2f", @total_working_times.to_f) %></td>
+        <% if current_user?(@user) %>
+          <td colspan="2">
+            <% form_with(model: @attendance, url: attendance_update_one_month_request_user_path(@user), local: true, method: :patch) do |f| %>
+              <%= f.hidden_file :one_month_approval_status, value: "申請中" %>
+              <%= f.hidden_file :day, value: @first_day %>
+                <% if @attendance.one_month_approval_status.nil %>
+                  所属長承認 未
+                <% elsif @attendance.one_month_approval_status == "申請中" %>
+                  <%= User.find(@attendance.superior_month_notice_confirmation).name %>へ勤怠申請中
+                <% elsif @attendance.one_month_approval_status == "承認" || @attendance.one_month_approval_status == "否認" %>
+                  <%= User.find(@attendance.superior_month_notice_confirmation).name %>より<%= @attendance.one_month_approval_status %>
+                <% end %>
+              <br><%= f.collection_select :superior_month_notice_confirmation, @superior, :id, :name, {prompt: ""}, {class: "form-control"} %></br>
+              <%= f.submit "申請", class: "btn btn-primary" %>
+            <% end %>
+          </td>
+        <% end %>
       </tr>
     </tfoot>
   </table>
